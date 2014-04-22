@@ -6,7 +6,10 @@
 ## won't run the computation. 
 
 ## This function - makeCacheMatrix - creates a special "matrix"
-## object that can cash its inverse.
+## object that can cashe its inverse. First it creates a matrix,
+## then it returns a list with 4 list items (in this case, 
+## functions: set(), get(), setsolve(), and getsolve()). You can
+## call any of the functions of the list.
 
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
@@ -23,10 +26,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function - casheSolve - computes the inverse of the special
-## "matrix" returned by makeCacheMatrix above. If the inverse has
-## already been calculated (and the matrix has not changed), then
-## the cacheSolve function will retrive the inverse from the cache.
+## casheSolve is a client function that computes the inverse of 
+## the special "matrix" made by the makeCacheMatrix function in
+## its implementation. If the inverse has already been calculated
+## (and the matrix has not changed), then the cacheSolve function
+## will retrive the inverse from the cache. Otgherwhise it will
+## run the computation to return the inverse.
 
 cacheSolve <- function(x, ...) {
   m <- x$getsolve()
